@@ -1,25 +1,55 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-import logo from './logo.svg'
-import Counter from './components/Counter'
+import AppTitle from './components/AppTitle'
 import SearchBar from './components/SearchBar'
+import WeatherCard from './components/WeatherCard'
 import * as api from './utils/api'
 
 function App() {
+  const [errorMsg, setErrorMsg] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [location, setLocation] = useState('')
+  const [currentLocation, setCurrentLocation] = useState('')
+  const [locationData, setLocationData] = useState(null)
 
-  const searchLocation = async (inputText) => {
-    const res = await api.getLocation(inputText)
-    console.log(res)
-  }
+  useEffect(() => {
+    if (!currentLocation) return
+    ;(async () => {
+      setIsLoading(true)
+      try {
+        const res = await api.getLocation(currentLocation)
+        if (!res.length) {
+          setIsLoading(() => false)
+          setErrorMsg(() => '404, Not found!')
+          return
+        }
+        setLocationData(() => res)
+      } catch(err) {
+        setErrorMsg(() => '500, Server Error!')
+      } finally {
+        setIsLoading(() => false)
+      }
+    })()
+  }, [currentLocation])
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <SearchBar location={location} setLocation={setLocation} searchLocation={searchLocation}/>
-      </header>
+      <section className="App-header">
+        <AppTitle />
+        <SearchBar
+          location={location}
+          setLocation={setLocation}
+          setCurrentLocation={setCurrentLocation}
+          isLoading={isLoading}
+          errorMsg={errorMsg}
+          setErrorMsg={setErrorMsg}
+        />
+        <WeatherCard
+          locationData={locationData}
+          setIsLoading={setIsLoading}
+          setErrorMsg={setErrorMsg}
+        />
+      </section>
     </div>
   )
 }

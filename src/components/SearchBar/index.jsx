@@ -1,15 +1,27 @@
 // style
-const inputClass = "shadow-md rounded-md text-slate-800"
+const inputClass = "base-card text-slate-800 px-2"
+const buttonClass = "base-card text-slate-800 bg-sky-200 m-4 px-2 hover:bg-sky-300"
 
-const SearchBar = ({ location, setLocation, searchLocation }) => {
+const SearchBar = ({ location, setLocation, setCurrentLocation, isLoading, errorMsg, setErrorMsg }) => {
+
+  const handleChange = (e) => {
+    setLocation(e.target.value)
+    setErrorMsg('')
+  }
+
   return (
     <div>
       <input
         className={inputClass}
         value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        onChange={handleChange}
       />
-      <button onClick={() => searchLocation(location)}>Search</button>
+      <button
+        disabled={isLoading}
+        className={buttonClass}
+        onClick={() => setCurrentLocation(location)}
+      >Search { isLoading && '...'}</button>
+      { !!errorMsg && <p className="text-red-400">Error: {errorMsg}</p> }
     </div>
   )
 }

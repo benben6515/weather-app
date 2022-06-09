@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    open: true,
     proxy: {
       '/api-geo': {
         target: 'https://api.openweathermap.org/geo/1.0',

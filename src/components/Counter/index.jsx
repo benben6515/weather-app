@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 const Counter = () => {
+  // not in use
   const [count, setCount] = useState(0)
 
   return (

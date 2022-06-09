@@ -1,14 +1,32 @@
-const ChartPie = ({ data, width, height, fillColor }) => {
-  const pathParam = `M${width / 2} ${height / 2},L${width / 2} ${width / 4},A${width / 4} ${width / 4} 0 0 0 ${width / 4} ${width / 2},Z`
-  const pathParam2 = `M${width / 2} ${height / 2},L${width / 2} ${width / 4},A${width / 4} ${width / 4} 0 1 1 ${width / 4} ${width / 2},Z`
+const ChartPie = ({ data = 75, width, height, fillColor = '#09d' }) => {
 
-  // TODO: add data
+  const startAngle = 90
+  const deg1 = (data * 3.6) + startAngle
+  const deg2 = ((100 - data) * 3.6) + deg1
+  const cx = width / 2
+  const cy = width / 2
+  const r = width / 4
+
+  const x0 = cx + r * Math.cos(startAngle * Math.PI / 180)
+  const y0 = cy - r * Math.sin(startAngle * Math.PI / 180)
+
+  const x1 = cx + r * Math.cos(deg1 * Math.PI / 180)
+  const y1 = cy - r * Math.sin(deg1 * Math.PI / 180)
+
+  const x2 = cx + r * Math.cos(deg2 * Math.PI / 180)
+  const y2 = cy - r * Math.sin(deg2 * Math.PI / 180)
+
+  const isDeg1BigThan180 = data > 50 ? 1 : 0
+  const isDeg2BigThan180 = data < 50 ? 1 : 0
+
+  const pathParam1 = `M${cx} ${cy},L${x0} ${y0},A${r} ${r} 0 ${isDeg1BigThan180} 0 ${x1} ${y1},Z`
+  const pathParam2 = `M${cx} ${cy},L${x1} ${y1},A${r} ${r} 0 ${isDeg2BigThan180} 0 ${x2} ${y2},Z`
 
   return (
     <div>
       <svg width={width} height={height} transform="scale(1.5)">
-        <path d={pathParam} fill="#666" />
-        <path d={pathParam2} fill="#09d" />
+        <path d={pathParam1} fill={fillColor} />
+        <path d={pathParam2} fill="#666" />
       </svg>
     </div>
   )

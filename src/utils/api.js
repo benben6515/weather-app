@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// front end api key
-const API_KEY = '38e1981202f1a44a468c5cf67b05fc5b'
-const TIMEOUT = 5000
+// env
+const API_KEY = import.meta.env.VITE_APP_API_KEY || '38e1981202f1a44a468c5cf67b05fc5b' // may not in use
+const TIMEOUT = import.meta.env.VITE_APP_TIMEOUT || 10000
 
 const locationUrl = axios.create({
   baseURL: '/api-geo',

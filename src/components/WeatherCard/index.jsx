@@ -8,8 +8,8 @@ import * as api from '../../utils/api'
 const wrapperClass = "base-card bg-gray-600 p-6 m-8 text-light-400 flex flex-col gap-4"
 
 const Content = ({ locationData, weatherData }) => {
-  const { lat, lon, name, local_names} = locationData[0]
-  let name_zh = local_names?.zh || ''
+  const { lat, lon, name, local_names } = locationData[0]
+  let name_zh = local_names ? local_names.zh : ''
 
   return (
     <div className={wrapperClass}>
@@ -21,13 +21,12 @@ const Content = ({ locationData, weatherData }) => {
 }
 
 const WeatherCard = ({ locationData, setIsLoading, setErrorMsg }) => {
-  if (!locationData) return
   const { lat, lon } = locationData[0]
   const [weatherData, setWeatherData] = useState(null)
-  const isShow = locationData?.length > 0
+  const isShow = locationData ? locationData.length > 0 : false
 
   useEffect(() => {
-    if (!lat || !lon) return
+    if (!lat || !lon) return null
     ;(async () => {
       setIsLoading(true)
       try {

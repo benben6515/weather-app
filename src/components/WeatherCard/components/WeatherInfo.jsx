@@ -2,7 +2,7 @@ import { tempToCelsius } from "../../../utils/tools"
 import ChartPie from '../../ChartPie'
 import ChartBar from '../../ChartBar'
 
-const pClass = "text-lg text-blue-300 flex justify-start items-center my-1"
+const textClass = "text-lg text-blue-300 flex justify-start items-center my-1"
 const pInfoClass = "text-sm text-gray-300 flex justify-start items-center my-1"
 const h3Class="text-2xl text-gary-100 mt-8 pt-2 border-t-2"
 
@@ -16,14 +16,14 @@ const WeatherInfo = ({ weatherData }) => {
     <div className="flex gap-4 justify-center items-center">
       <div className="text-4xl text-light-300 m-6">{tempToCelsius(temp)} °C</div>
       <div className="flex flex-col">
-        <p className={pClass}>
+        <div className={textClass}>
           Clouds: {clouds} %
           <ChartPie width="40" height="40" data={clouds} fillColor="#eee" />
-        </p>
-        <p className={pClass}>
+        </div>
+        <div className={textClass}>
           Humidity: {humidity} %
-          <ChartPie width="40" height="40" data={humidity}/>
-        </p>
+          <ChartPie width="40" height="40" data={humidity} />
+        </div>
         <p className={pInfoClass}>Pressure: {pressure}</p>
       </div>
     </div>

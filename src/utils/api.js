@@ -4,14 +4,16 @@ import axios from 'axios'
 const API_KEY = import.meta.env.VITE_APP_API_KEY || '38e1981202f1a44a468c5cf67b05fc5b' // may not in use
 const TIMEOUT = import.meta.env.VITE_APP_TIMEOUT || 10000
 
+console.log(import.meta.env.MODE)
+
 const locationUrl = axios.create({
-  baseURL: '/api-geo',
+  baseURL: import.meta.env.MODE === 'development' ? '/api-geo' : 'https://api.openweathermap.org/geo/1.0',
   timeout: TIMEOUT,
   headers: {'X-Custom-Header': 'benben'}
 });
 
 const weatherUrl = axios.create({
-  baseURL: '/api-data',
+  baseURL: import.meta.env.MODE === 'development' ? '/api-data' : 'https://api.openweathermap.org/data/3.0',
   timeout: TIMEOUT,
   headers: {'X-Custom-Header': 'benben'}
 });

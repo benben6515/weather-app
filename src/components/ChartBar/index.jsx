@@ -24,22 +24,55 @@ const ChartPie = ({ information , w = 500, h = 500, fillColor = '#09d' }) => {
   const yOffsetTop = h / 6
 
   const xBar = data.map((e) => (
-    <text x={w * (e.index + 0.5) / 6} y={h * 5.5 / 6} font-size="14" text-anchor="middle" fill={textXColor}>{`${e.date.getMonth() + 1}-${e.date.getDate()}`}</text>
+    <text
+      x={w * (e.index + 0.5) / 6}
+      y={h * 5.5 / 6}
+      fontSize="14"
+      textAnchor="middle"
+      fill={textXColor}
+      key={e.index}
+    >{`${e.date.getMonth() + 1}-${e.date.getDate()}`}</text>
   ))
+
   const yBar = Array(7).fill(null).map((e, idx) => (
-    <text x={w * 0.75 / 6} y={yRange * (idx + 1) / 8 + yOffsetTop} font-size="14" text-anchor="end" fill={textYColor}>{35 - idx * 5}</text>
+    <text
+      x={w * 0.75 / 6}
+      y={yRange * (idx + 1) / 8 + yOffsetTop}
+      fontSize="14"
+      textAnchor="end"
+      fill={textYColor}
+      key={idx}
+    >{35 - idx * 5}</text>
   ))
 
   const minCircle = data.map((e) => (
-    <circle fill="#eee" stroke={minColor} strokeWidth="2" cx={(e.index + 0.5) / 6 * w} cy={(40 - e.min) / 40 * yRange + yOffsetTop} r="5"/>
+    <circle
+      fill="#eee"
+      stroke={minColor}
+      strokeWidth="2"
+      cx={(e.index + 0.5) / 6 * w}
+      cy={(40 - e.min) / 40 * yRange + yOffsetTop}
+      r="5"
+      key={e.index}
+    />
   ))
+
   const maxCircle = data.map((e) => (
-    <circle fill="#eee" stroke={maxColor} strokeWidth="2" cx={(e.index + 0.5) / 6 * w} cy={(40 - e.max) / 40 * yRange + yOffsetTop} r="5"/>
+    <circle
+      fill="#eee"
+      stroke={maxColor}
+      strokeWidth="2"
+      cx={(e.index + 0.5) / 6 * w}
+      cy={(40 - e.max) / 40 * yRange + yOffsetTop}
+      r="5"
+      key={e.index}
+    />
   ))
 
   const minPathParam = data.reduce((acc, cur) => {
     return acc + `L${(cur.index + 0.5) / 6 * w} ${(40 - cur.min) / 40 * yRange + yOffsetTop} `
   }, '').replace(/L/, 'M')
+
   const maxPathParam = data.reduce((acc, cur) => {
     return acc + `L${(cur.index + 0.5) / 6 * w} ${(40 - cur.max) / 40 * yRange + yOffsetTop} `
   }, '').replace(/L/, 'M')
@@ -54,8 +87,8 @@ const ChartPie = ({ information , w = 500, h = 500, fillColor = '#09d' }) => {
         <line stroke="gray" x1={w / 6} y1={h / 6} x2={w / 6} y2={h * 5 / 6} />
         {yBar}
 
-        <path d={minPathParam} stroke={minColor} stroke-width="3" fill="none"/>
-        <path d={maxPathParam} stroke={maxColor} stroke-width="3" fill="none"/>
+        <path d={minPathParam} stroke={minColor} strokeWidth="3" fill="none"/>
+        <path d={maxPathParam} stroke={maxColor} strokeWidth="3" fill="none"/>
 
         {minCircle}
         {maxCircle}

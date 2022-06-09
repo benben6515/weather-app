@@ -44,11 +44,13 @@ function App() {
           errorMsg={errorMsg}
           setErrorMsg={setErrorMsg}
         />
-        <WeatherCard
-          locationData={locationData}
-          setIsLoading={setIsLoading}
-          setErrorMsg={setErrorMsg}
-        />
+        {!!locationData &&
+          <WeatherCard
+            locationData={locationData}
+            setIsLoading={setIsLoading}
+            setErrorMsg={setErrorMsg}
+          />
+        }
       </section>
     </div>
   )

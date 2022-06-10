@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# dist                 # need deploy on heroku
 dist-ssr
 *.local
 

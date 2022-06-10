@@ -1,19 +1,19 @@
 import axios from 'axios'
 
 // env
-const API_KEY = import.meta.env.VITE_APP_API_KEY || '38e1981202f1a44a468c5cf67b05fc5b' // may not in use
 const TIMEOUT = import.meta.env.VITE_APP_TIMEOUT || 10000
+const PORT = import.meta.env.VITE_APP_PORT || 4000
 
-console.log(import.meta.env.MODE)
+const isDev  = import.meta.env.MODE === 'development'
 
 const locationUrl = axios.create({
-  baseURL: import.meta.env.MODE === 'development' ? '/api-geo' : 'https://api.openweathermap.org/geo/1.0',
+  baseURL: isDev ? '/api-geo' : `http://localhost:${PORT}/api-geo`,
   timeout: TIMEOUT,
   headers: {'X-Custom-Header': 'benben'}
 });
 
 const weatherUrl = axios.create({
-  baseURL: import.meta.env.MODE === 'development' ? '/api-data' : 'https://api.openweathermap.org/data/3.0',
+  baseURL: isDev ? '/api-data' : `http://localhost:${PORT}/api-data`,
   timeout: TIMEOUT,
   headers: {'X-Custom-Header': 'benben'}
 });
@@ -25,7 +25,8 @@ const weatherUrl = axios.create({
  * 各種語言都行！
  */
 export const getLocation = (location) => {
-  return locationUrl.get(`/direct?q=${encodeURIComponent(location)}&limit=5&appid=${API_KEY}`)
+  // return locationUrl.get(`/direct?q=${encodeURIComponent(location)}&limit=5&appid=${API_KEY}`)
+  return locationUrl.get(`/direct?q=${encodeURIComponent(location)}&limit=5`)
     .then(res => res.data)
     .catch(err => console.log(err))
 }
@@ -39,7 +40,8 @@ export const getLocation = (location) => {
  * exclude -> current minutely hourly daily alerts
  */
 export const getWeather = ({ lat, lon }) => {
-  return weatherUrl.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}`)
+  // return weatherUrl.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}`)
+  return weatherUrl.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts`)
     .then(res => res.data)
     .catch(err => console.log(err))
 }

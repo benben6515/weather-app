@@ -44,6 +44,13 @@ Create a web application that shows the weather forecast by city.
   - [x] 4. Git project with at least 1 commit.
   - [x] 5. Please provide a project link or zip/tar file containing all application artifacts.
 
+### result
+
+![](https://i.imgur.com/kaNqCEy.png)
+
+- in the future (maybe)
+  - add TypeScript
+  - add more API
 ### development
 
 ```bash

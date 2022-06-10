@@ -25,7 +25,6 @@ const weatherUrl = axios.create({
  * 各種語言都行！
  */
 export const getLocation = (location) => {
-  // return locationUrl.get(`/direct?q=${encodeURIComponent(location)}&limit=5&appid=${API_KEY}`)
   return locationUrl.get(`/direct?q=${encodeURIComponent(location)}&limit=5`)
     .then(res => res.data)
     .catch(err => console.log(err))
@@ -40,7 +39,6 @@ export const getLocation = (location) => {
  * exclude -> current minutely hourly daily alerts
  */
 export const getWeather = ({ lat, lon }) => {
-  // return weatherUrl.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}`)
   return weatherUrl.get(`/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts`)
     .then(res => res.data)
     .catch(err => console.log(err))

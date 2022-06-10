@@ -26,8 +26,20 @@ Create a web application that shows the weather forecast by city.
 
 ---
 
-## [Demo](https://benben-weather-box.herokuapp.com/)
+## [Demo](https://benben-weather-box.herokuapp.com/) `FIXME`
 ## [Github](https://github.com/benben6515/weather-app)
+
+### Usage
+
+```bash
+# *create a  `.env` file from `.env.sample`
+
+npm install
+
+npm run start
+
+# it should work!
+```
 
 - Note
   - fqa: https://openweathermap.org/faq#onecall
@@ -43,7 +55,7 @@ Create a web application that shows the weather forecast by city.
   - Back-End
     - node
     - express : proxy server, rate limit.
-    - deploy : heroku
+    - deploy : heroku (but meet some tech problem)
 
 - Check list
   - [x] 1. Please use one of React / Vue / Svelte / Ember / Angular to implement the web application (We use React mostly).
@@ -52,6 +64,9 @@ Create a web application that shows the weather forecast by city.
   - [x] 4. Git project with at least 1 commit.
   - [x] 5. Please provide a project link or zip/tar file containing all application artifacts.
 
+- Problems
+  - meet some problem when deploy vite project on heroku QQ
+  - but local can work
 ### result
 
 ![](https://i.imgur.com/kaNqCEy.png)

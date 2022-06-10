@@ -26,18 +26,26 @@ Create a web application that shows the weather forecast by city.
 
 ---
 
-- note
+## [Demo](https://benben-weather-box.herokuapp.com/)
+## [Github](https://github.com/benben6515/weather-app)
+
+- Note
   - fqa: https://openweathermap.org/faq#onecall
   - 1,000 API calls per day for free
   - `api key` may take about 2 hours for setup
 
-- stack
-  - vite
-  - react 18
-  - tailwind
-  - svg
+- Stack
+  - Front-End
+    - vite
+    - react 18
+    - tailwind
+    - svg
+  - Back-End
+    - node
+    - express : proxy server, rate limit.
+    - deploy : heroku
 
-- check list
+- Check list
   - [x] 1. Please use one of React / Vue / Svelte / Ember / Angular to implement the web application (We use React mostly).
   - [x] 2. You can use open API from: https://openweathermap.org/api or another open weather API to meet requirements
   - [x] 3. Don't use the UI component library for bar charts & pie charts. Write your style and component.
@@ -51,6 +59,7 @@ Create a web application that shows the weather forecast by city.
 - in the future (maybe)
   - add TypeScript
   - add more API
+
 ### development
 
 ```bash

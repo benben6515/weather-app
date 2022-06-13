@@ -1,5 +1,13 @@
-import tailwindcss from "tailwindcss";
+// import tailwindcss from "tailwindcss";
+
+// export default {
+//     plugins: [tailwindcss("./tailwind.config.js"), require("autoprefixer")],
+// };
+
+import tailwind from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+import tailwindConfig from './tailwind.config.js'
 
 export default {
-    plugins: [tailwindcss("./tailwind.config.js"), require("autoprefixer")],
-};
+  plugins: [tailwind(tailwindConfig), autoprefixer],
+}

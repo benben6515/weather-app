@@ -2,19 +2,14 @@ import axios from 'axios'
 
 // env
 const TIMEOUT = import.meta.env.VITE_APP_TIMEOUT || 10000
-const PORT = import.meta.env.VITE_APP_PORT || 4000
-
-const isDev  = import.meta.env.MODE === 'development'
 
 const locationUrl = axios.create({
-  // baseURL: isDev ? '/api-geo' : `http://localhost:${PORT}/api-geo`,
   baseURL: '/api-geo',
   timeout: TIMEOUT,
   headers: {'X-Custom-Header': 'benben'}
 });
 
 const weatherUrl = axios.create({
-  // baseURL: isDev ? '/api-data' : `http://localhost:${PORT}/api-data`,
   baseURL: '/api-data',
   timeout: TIMEOUT,
   headers: {'X-Custom-Header': 'benben'}

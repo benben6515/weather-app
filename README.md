@@ -26,7 +26,7 @@ Create a web application that shows the weather forecast by city.
 
 ---
 
-## [Demo](https://benben-weather-box.herokuapp.com/) `FIXME`
+## [Demo](https://benben-weather-box.herokuapp.com/) `Try input 'New York', '台北' ... to show weather.`
 ## [Github](https://github.com/benben6515/weather-app)
 
 ### Usage
@@ -53,9 +53,9 @@ npm run start
     - tailwind
     - svg
   - Back-End
-    - node
-    - express : proxy server, rate limit.
-    - deploy : heroku (but meet some tech problem)
+    - server: node + vite server
+    - express : proxy server, rate limit ...
+    - deploy : heroku
 
 - Check list
   - [x] 1. Please use one of React / Vue / Svelte / Ember / Angular to implement the web application (We use React mostly).
@@ -64,9 +64,6 @@ npm run start
   - [x] 4. Git project with at least 1 commit.
   - [x] 5. Please provide a project link or zip/tar file containing all application artifacts.
 
-- Problems
-  - meet some problem when deploy vite project on heroku QQ
-  - but local can work
 ### result
 
 ![](https://i.imgur.com/kaNqCEy.png)

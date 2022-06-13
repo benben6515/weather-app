@@ -6,7 +6,6 @@ const apiKey = env.API_KEY || ''
 const geoApiUrl = env.GEO_API_URL || ''
 const weatherApiUrl = env.WEATHER_API_URL || ''
 
-
 export const ApiGeo = (req, res) => {
   const url = `${req.url}&appid=${apiKey}`
   axios

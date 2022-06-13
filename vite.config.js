@@ -10,6 +10,7 @@ export default defineConfig({
   },
   server: {
     open: true,
+    // dev proxy
     proxy: {
       '/api-geo': {
         target: 'https://api.openweathermap.org/geo/1.0',

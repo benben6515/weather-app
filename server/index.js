@@ -9,7 +9,7 @@ import checkEnvKeys from './checkEnvKeys.js'
 import { ApiGeo, ApiWeather } from './middleware.js'
 
 const env = checkEnvKeys(process.env)
-const host = 'localhost'
+// const host = 'localhost'
 const port = process.env.PORT || 3000
 const isDev = env.MODE === 'development'
 
@@ -62,7 +62,7 @@ if (isDev) {
   })()
 } else {
   app.use('/', express.static(path.join(__dirname, '../dist')))
-  app.listen(process.env.PORT || port, host, () => {
-    console.log('Server listening on ' + host + ':' + port)
+  app.listen(process.env.PORT || port, () => {
+    console.log('Server listening on ' + port)
   })
 }

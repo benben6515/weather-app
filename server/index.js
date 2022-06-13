@@ -10,7 +10,7 @@ import { ApiGeo, ApiWeather } from './middleware.js'
 
 const env = checkEnvKeys(process.env)
 const host = 'localhost'
-const port = +env.PORT
+const port = env.PORT || 3000
 const isDev = env.MODE === 'development'
 
 const app = express()

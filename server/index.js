@@ -10,7 +10,7 @@ import { ApiGeo, ApiWeather } from './middleware.js'
 
 const env = checkEnvKeys(process.env)
 const host = 'localhost'
-const port = env.PORT || 3000
+const port = process.env.PORT || 3000
 const isDev = env.MODE === 'development'
 
 const app = express()
@@ -62,7 +62,7 @@ if (isDev) {
   })()
 } else {
   app.use('/', express.static(path.join(__dirname, '../dist')))
-  app.listen(port, host, () => {
+  app.listen(process.env.PORT || port, host, () => {
     console.log('Server listening on ' + host + ':' + port)
   })
 }

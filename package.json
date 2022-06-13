@@ -3,13 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:prod": "cross-env NODE_ENV=production && vite build",
     "preview": "vite preview",
-    "start": "cross-env NODE_ENV=production && node server.js",
-    "dev:server": "node server.js"
+    "start": "cross-env NODE_ENV=production && node ./server",
+    "dev:server": "node server"
   },
   "engines": {
     "node": "16.x"

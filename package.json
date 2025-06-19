@@ -13,7 +13,7 @@
     "dev:server": "node server"
   },
   "engines": {
-    "node": "16.x"
+    "node": "24.x"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -35,3 +35,4 @@
     "tailwindcss": "^3.0.24"
   }
 }
+
